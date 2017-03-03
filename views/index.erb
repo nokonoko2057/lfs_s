@@ -48,15 +48,27 @@
 			<div id="history_all" class="box">
 	         <h2>Historyの一覧</h2>
 	         <div class="content">
+	         	<table align="center">
+	         		<tr>
+	      				<td><p><span>id</span></p></td>
+	               	<td><p><span>値</span></p></td>
+	               	<td><p><span>カテゴリー</span></p></td>
+	               	<td><p><span>単位</span></p></td>
+	               	<td><p><span>結果</span></p></td>
+		            </tr>
 	            <% @histories.each do |history| %>
 		            <div class="history">
-		               <p><span>id</span>：<%= history.id %></p>
-		               <p><span>値</span>：<%= history.value %></p>
-		               <p><span>カテゴリー</span>：<%= history.category %></p>
-		               <p><span>単位</span>：<%= history.unit %></p>
-		               <p><span>結果</span>：<%= history.value %><%= history.category %>は<%= history.unit %><%= history.result %>コ分</p>
+		            	<tr>
+		               	<td><p><%= history.id %></p></td>
+		               	<td><p><%= history.value %></p></td>
+		               	<td><p><%= history.category %></p></td>
+		               	<td><p><%= history.unit %></p></td>
+		               	<td><p><%= history.value %><%= history.category %>は<%= history.unit %><%= history.result %>コ分</p></td>
+		               </tr>
+		               
 	               </div>
 	            <% end %>
+	            </table>
 	         </div>
 	      </div>
 	   </div>

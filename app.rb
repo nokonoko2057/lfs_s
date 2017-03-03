@@ -8,7 +8,6 @@ require './models'
 require './calculationmanager.rb'
 
 # 誰が編集したかは左側の色によってわかる
-# ふなみん申し訳ない。。。ありがとう。。
 
 get '/' do 
    @units = Unit.all
@@ -25,14 +24,8 @@ post '/result' do #doが抜けてた
       unit: params[:unit],
       result: result
    })
-   
-   
-   
+
    redirect '/'
-  
-   
-   
-   
 end
 
 get '/admin' do #doが抜けてた

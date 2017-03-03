@@ -19,7 +19,8 @@ class Calculation
       puts parameters.class_variables
       puts parameters.ancestors
       puts "////////////////////"
-      puts parameters
+      puts parameters.all
+      
       
       return "aaa"
       # parameters.methods

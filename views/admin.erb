@@ -51,22 +51,35 @@
         <div id="unit_all" class="box">
             <h2>Unitの管理</h2>
             <div class="content">
-                <% @units.each do |unit| %>
-                <div class="unit">
-                    <p><span>id</span><%= unit.id %></p>
-                    <p><span>名前</span><%= unit.name %></p>
-                    <p><span>値</span><%= unit.value %></p>
-                    <p><span>カテゴリー</span><%= unit.category %></p>
-                    <div>
-                        <form action="/admin/edit/<%= unit.id %>" method="post">
-                            <input type="submit" value="編集">
-                        </form>
-                        <form action="/admin/delete/<%= unit.id %>" method="post">
-                            <input type="submit" value="削除">
-                        </form>
-                    </div>
+                <table align="center">
+                    <tr>
+                        <td><p><span>id</span></p></td>
+                        <td><p><span>名前</span></p></td>
+                        <td><p><span>値</span></p></td>
+                        <td><p><span>カテゴリー</span></p></td>
+                        <td><p><span></span></p></td>
+                    </tr>
+                    <% @units.each do |unit| %>
+                    <div class="unit">
+                    <tr>
+                        <td><p><%= unit.id %></p></td>
+                        <td><p><%= unit.name %></p></td>
+                        <td><p><%= unit.value %></p></td>
+                        <td><p><%= unit.category %></p></td>
+                        <td>
+                            <div>
+                            <form action="/admin/edit/<%= unit.id %>" method="post">
+                                <input type="submit" value="編集">
+                            </form>
+                            <form action="/admin/delete/<%= unit.id %>" method="post">
+                                <input type="submit" value="削除">
+                            </form>
+                            </div>
+                        </td>
+                    </tr>
                 </div>
                 <% end %>
+                </table>
             </div>
         </div>
     </div>
@@ -74,15 +87,26 @@
         <div id="history_all" class="box">
             <h2>Historyの一覧</h2>
             <div class="content">
+                <table align="center">
+                    <tr>
+                        <td><p><span>id</span></p></td>
+                        <td><p><span>値</span></p></td>
+                        <td><p><span>単位</span></p></td>
+                        <td><p><span>割る値</span></p></td>
+                        <td><p><span>結果</span></p></td>
+                    </tr>
                 <% @histories.each do |history| %>
                     <div class="history">
-                        <p><span>id</span>：<%= history.id %></p>
-                        <p><span>値</span>：<%= history.value %></p>
-                        <p><span>値</span>：<%= history.category %></p>
-                        <p><span>単位</span>：<%= history.unit %></p>
-                        <p><span>結果</span>：<%= history.result %></p>
+                    <tr>
+                        <td><p><%= history.id %></p></td>
+                        <td><p><%= history.value %></p></td>
+                        <td><p><%= history.category %></p></td>
+                        <td><p><%= history.unit %></p></td>
+                        <td><p><%= history.result %></p></td>
+                    </tr>
                     </div>
                 <% end %>
+                </table>
             </div>
         </div>
         <div id="history_reset" class="box">
