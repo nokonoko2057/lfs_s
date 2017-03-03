@@ -15,8 +15,8 @@
             <div class="content">
                     <% if @mode == "add" %>
                     <form action="/admin/new" method="post">
-                        <p><span>名前</span><input type="text" name="name"></p>
-                        <p><span>値</span><input type="text" name="value"></p>
+                        <p><span>名前</span><input type="text" name="name" placeholder = "name"></p>
+                        <p><span>値</span><input type="text" name="value" placeholder = "value"></p>
                         <p><span>カテゴリー</span>
                             <select name="category" size="1">
                     			<option value="">------------</option>
@@ -27,6 +27,7 @@
                     			<option value="m2">m2</option>
                 		    </select>
                         </p>
+                        <p><span>画像</span><input type="text" name="image_url" placeholder = "image_url"></p>
                         <p><input type="submit" value="登録"></p>
                     <% elsif @mode == "edit" %>
                     <form action="/admin/update/<%= @unit.id %>" method="post">
@@ -42,6 +43,7 @@
                     			<option value="m2">m2</option>
                 		    </select>
                         </p>
+                        <p>画像: <input type="text" name="image_url" value="<%= @unit.image_url %>"></p>
                         <p><input type="submit" value="更新"></p>
                     <% end %>
                 </form>
@@ -57,7 +59,8 @@
                         <td><p><span>名前</span></p></td>
                         <td><p><span>値</span></p></td>
                         <td><p><span>カテゴリー</span></p></td>
-                        <td><p><span></span></p></td>
+                        <td><p><span>画像</span></p></td>
+                        <td><p><span>編集・削除</span></p></td>
                     </tr>
                     <% @units.each do |unit| %>
                     <div class="unit">
@@ -66,6 +69,7 @@
                         <td><p><%= unit.name %></p></td>
                         <td><p><%= unit.value %></p></td>
                         <td><p><%= unit.category %></p></td>
+                        <td><p><img src = <%= unit.image_url %> width="100" height="100"></p></td>
                         <td>
                             <div>
                             <form action="/admin/edit/<%= unit.id %>" method="post">
@@ -92,6 +96,7 @@
                         <td><p><span>id</span></p></td>
                         <td><p><span>値</span></p></td>
                         <td><p><span>単位</span></p></td>
+                        <td><p><span>画像</span></p></td>
                         <td><p><span>割る値</span></p></td>
                         <td><p><span>結果</span></p></td>
                     </tr>
@@ -101,6 +106,7 @@
                         <td><p><%= history.id %></p></td>
                         <td><p><%= history.value %></p></td>
                         <td><p><%= history.category %></p></td>
+                        <td><p><img src=<%= history.category %> width="100" height="100"></p></td>
                         <td><p><%= history.unit %></p></td>
                         <td><p><%= history.result %></p></td>
                     </tr>

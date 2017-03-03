@@ -22,6 +22,7 @@ post '/result' do #doが抜けてた
       value: params[:value],
       category: params[:category],
       unit: params[:unit],
+      # image_url: params[:image_url],
       result: result
    })
 
@@ -43,7 +44,8 @@ post '/admin/new' do
    Unit.create({
       name: params[:name],
       category: params[:category],
-      value: params[:value]
+      value: params[:value],
+      image_url: params[:image_url]
    })
    redirect '/admin'
 end
@@ -52,7 +54,8 @@ post '/admin/update/:id' do
    Unit.find_by(params[:id]).update({
       name: params[:name],
       category: params[:category],
-      value: params[:value]
+      value: params[:value],
+      image_url: params[:image_url]
    })
    redirect '/admin'
 end

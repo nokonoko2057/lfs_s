@@ -64,6 +64,7 @@
 		               	<td><p><%= history.category %></p></td>
 		               	<td><p><%= history.unit %></p></td>
 		               	<td><p><%= history.value %><%= history.category %>は<%= history.unit %><%= history.result %>コ分</p></td>
+		               	
 		               </tr>
 		               
 	               </div>
@@ -75,11 +76,14 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/p5.min.js"></script>
 	  	<script>
 	      var img; 
+	      var tint_counter = 0;
 	
 			function setup() {
 				var canvas = createCanvas(480, 400);
 				canvas.parent("#p5Canvas");
 				img = loadImage("http://4.bp.blogspot.com/-nF05OoWtkvE/VtWyUgIFumI/AAAAAAAA4R4/vYfh_QJrJKk/s800/animalface_tanuki.png");  // Load the image
+			
+				// img = loadImage(<%= @units.first.image_url %>);
 			}
 	
 			function draw() {
@@ -88,7 +92,9 @@
 				
 				for (var i=0;i<num;i++){
 			  		image(img,i*width/num, 0, width/num, img.height*imgScale);
+			  		tint(255,255,255,tint_counter);
 				}
+				tint_counter += 2;
 			}
 	  </script>
 	</main>

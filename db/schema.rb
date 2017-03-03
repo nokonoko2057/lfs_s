@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20170303150711) do
     t.integer  "value"
     t.string   "unit"
     t.string   "result"
+    t.string   "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "category"
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170303150711) do
     t.string   "name"
     t.string   "category"
     t.float    "value"
+    t.string   "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
