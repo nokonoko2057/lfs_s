@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>◯◯ってどれくらい？管理画面</title>
+	<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <h1>管理画面</h1>
+    
+    <form action="/admin/new" method="post">
+        <p>名前：<input type="text" name="name"></p>
+        <p>カテゴリー：
+            <select name="category" size="1">
+    			<option value="">------------</option>
+    			<option value="kg">kg</option>
+    			<option value="cm">cm</option>
+    			<option value="m">m</option>
+    			<option value="km">km</option>
+    			<option value="m2">m2</option>
+		    </select>
+        </p>
+        <p>値：<input type="text" name="value"></p>
+        <p><input type="submit" value="登録"></p>
+    </form>
+    
+    
+    <table>
+        <tr>
+            <th>id</th>
+            <th>名前</th>
+            <th>カテゴリー</th>
+            <th>値</th>
+            <th></th>
+            <th></th>
+        </tr>
+    <% @units.each do |unit| %>
+        <tr>
+            <td><%= unit.id %></td>
+            <td><%= unit.name %></td>
+            <td><%= unit.category %></td>
+            <td><%= unit.value %></td>
+            <td>
+                <form action="/admin/delete/<%= unit.id %>" method="post">
+                    <input type="submit" value="削除">
+                </form>
+            </td>
+            <td>
+                <form action="/admin/edit/<%= unit.id %>" method="post">
+                    <input type="submit" value="編集">
+                </form>
+            </td>
+        </tr>
+
+    <% end %>
+    </table>
+</body>
+</html>
