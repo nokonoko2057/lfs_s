@@ -6,53 +6,79 @@
 	<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-	<h2>◯◯ってどれくらい？</h2>
-	<form action = "/result" method="post">
-		<input type="text" name="value" placeholder = "value">
-		<select name="category" size="1">
-			<option value="">------------</option>
-			<option value="kg">kg</option>
-			<option value="cm">cm</option>
-			<option value="m">m</option>
-			<option value="km">km</option>
-			<option value="m2">m2</option>
-		</select>
-		<input type="submit" value = "send">
-	</form>
-	<%= @value%>
-	<%= @unit%>
-	
-	
-	<%= @texts%>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/p5.min.js"></script>
-  	<script>
-      var img; 
-
-		function setup() {
-		  createCanvas(windowWidth, 800);
-		  img = loadImage("http://4.bp.blogspot.com/-nF05OoWtkvE/VtWyUgIFumI/AAAAAAAA4R4/vYfh_QJrJKk/s800/animalface_tanuki.png");  // Load the image
-		}
-
-		function draw() {
-			var num = 5;
-			var imgScale = width / (num*img.width) ;
+	<main id="index">
+		<h1><span>T</span>ake <span>M</span>easure</h2>
+		<div id="left-bar">
+			<div id="measure_form" class="box">
+				<h2>◯◯ってどれくらい？</h2>
+				<div class="content">
+					<form action = "/result" method="post">
+						<p><span>値</span><input type="text" name="value" placeholder = "value"></p>
+						<p><span>カテゴリー</span><select name="category" size="1">
+							<option value="">------------</option>
+							<option value="kg">kg</option>
+							<option value="cm">cm</option>
+							<option value="m">m</option>
+							<option value="km">km</option>
+							<option value="m2">m2</option>
+						</select></p>
+						<p><span>単位</span><select name="unit" size="1">
+							<% @units.each do |unit| %>
+								<option value="<%= unit.value %>"><%= unit.name %> (<%= unit.value %> <%= unit.category %>)</option>
+							<% end %>
+						</select></p>
+						<input type="submit" value = "換算">
+					</form>
+				</div>
+			</div>
 			
-			for (var i=0;i<num;i++){
-		  		image(img,i*width/num, 0, width/num, img.height*imgScale);
+			<div id="canvas" class="box">
+				<h2>図説</h2>
+				<div class="content">
+					<div id="p5Canvas"></div>
+				</div>
+			</div>
+			<%= @value%>
+			<%= @unit%>
+			
+			
+			<%= @texts%>
+		</div>
+		<div id="right-bar">
+			<div id="history_all" class="box">
+	         <h2>Historyの一覧</h2>
+	         <div class="content">
+	            <% @histories.each do |history| %>
+		            <div class="history">
+		               <p><span>id</span>：<%= history.id %></p>
+		               <p><span>値</span>：<%= history.value %></p>
+		               <p><span>カテゴリー</span>：<%= history.category %></p>
+		               <p><span>単位</span>：<%= history.unit %></p>
+		               <p><span>結果</span>：<%= history.value %><%= history.category %>は<%= history.unit %><%= history.result %>コ分</p>
+	               </div>
+	            <% end %>
+	         </div>
+	      </div>
+	   </div>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/p5.min.js"></script>
+	  	<script>
+	      var img; 
+	
+			function setup() {
+				var canvas = createCanvas(480, 400);
+				canvas.parent("#p5Canvas");
+				img = loadImage("http://4.bp.blogspot.com/-nF05OoWtkvE/VtWyUgIFumI/AAAAAAAA4R4/vYfh_QJrJKk/s800/animalface_tanuki.png");  // Load the image
 			}
-		}
-  </script>
 	
-	<h2>Histories</h2>
-	<table>
-		<% @histories.each do |history|%>
-			<tr>
-				<td>	<%= history.value%>, <%= history.unit%></td>
-			</tr>
-		<% end %>
-	</table>
-	
-	
-
+			function draw() {
+				var num = 5;
+				var imgScale = width / (num*img.width) ;
+				
+				for (var i=0;i<num;i++){
+			  		image(img,i*width/num, 0, width/num, img.height*imgScale);
+				}
+			}
+	  </script>
+	</main>
 </body>
 </html>

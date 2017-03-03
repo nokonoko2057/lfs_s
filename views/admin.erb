@@ -6,53 +6,94 @@
 	<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-    <h1>管理画面</h1>
+    <main id="admin">
+    <h1><span>T</span>ake <span>A</span>dmin</h1>
     
-    <form action="/admin/new" method="post">
-        <p>名前：<input type="text" name="name"></p>
-        <p>カテゴリー：
-            <select name="category" size="1">
-    			<option value="">------------</option>
-    			<option value="kg">kg</option>
-    			<option value="cm">cm</option>
-    			<option value="m">m</option>
-    			<option value="km">km</option>
-    			<option value="m2">m2</option>
-		    </select>
-        </p>
-        <p>値：<input type="text" name="value"></p>
-        <p><input type="submit" value="登録"></p>
-    </form>
-    
-    
-    <table>
-        <tr>
-            <th>id</th>
-            <th>名前</th>
-            <th>カテゴリー</th>
-            <th>値</th>
-            <th></th>
-            <th></th>
-        </tr>
-    <% @units.each do |unit| %>
-        <tr>
-            <td><%= unit.id %></td>
-            <td><%= unit.name %></td>
-            <td><%= unit.category %></td>
-            <td><%= unit.value %></td>
-            <td>
-                <form action="/admin/delete/<%= unit.id %>" method="post">
-                    <input type="submit" value="削除">
+    <div id="left-bar">
+        <div id="unit_form" class="box">
+            <h2>Unitの追加/編集</h2>
+            <div class="content">
+                    <% if @mode == "add" %>
+                    <form action="/admin/new" method="post">
+                        <p><span>名前</span><input type="text" name="name"></p>
+                        <p><span>値</span><input type="text" name="value"></p>
+                        <p><span>カテゴリー</span>
+                            <select name="category" size="1">
+                    			<option value="">------------</option>
+                    			<option value="kg">kg</option>
+                    			<option value="cm">cm</option>
+                    			<option value="m">m</option>
+                    			<option value="km">km</option>
+                    			<option value="m2">m2</option>
+                		    </select>
+                        </p>
+                        <p><input type="submit" value="登録"></p>
+                    <% elsif @mode == "edit" %>
+                    <form action="/admin/update/<%= @unit.id %>" method="post">
+                        <p>名前：<input type="text" name="name" value="<%= @unit.name %>"></p>
+                        <p>値：<input type="text" name="value" value="<%= @unit.value %>"></p>
+                        <p>カテゴリー：
+                            <select name="category" size="1">
+                    			<option value="">------------</option>
+                    			<option value="kg">kg</option>
+                    			<option value="cm">cm</option>
+                    			<option value="m">m</option>
+                    			<option value="km">km</option>
+                    			<option value="m2">m2</option>
+                		    </select>
+                        </p>
+                        <p><input type="submit" value="更新"></p>
+                    <% end %>
                 </form>
-            </td>
-            <td>
-                <form action="/admin/edit/<%= unit.id %>" method="post">
-                    <input type="submit" value="編集">
+            </div>
+        </div>
+        
+        <div id="unit_all" class="box">
+            <h2>Unitの管理</h2>
+            <div class="content">
+                <% @units.each do |unit| %>
+                <div class="unit">
+                    <p><span>id</span><%= unit.id %></p>
+                    <p><span>名前</span><%= unit.name %></p>
+                    <p><span>値</span><%= unit.value %></p>
+                    <p><span>カテゴリー</span><%= unit.category %></p>
+                    <div>
+                        <form action="/admin/edit/<%= unit.id %>" method="post">
+                            <input type="submit" value="編集">
+                        </form>
+                        <form action="/admin/delete/<%= unit.id %>" method="post">
+                            <input type="submit" value="削除">
+                        </form>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div id="right-bar">
+        <div id="history_all" class="box">
+            <h2>Historyの一覧</h2>
+            <div class="content">
+                <% @histories.each do |history| %>
+                    <div class="history">
+                        <p><span>id</span>：<%= history.id %></p>
+                        <p><span>値</span>：<%= history.value %></p>
+                        <p><span>値</span>：<%= history.category %></p>
+                        <p><span>単位</span>：<%= history.unit %></p>
+                        <p><span>結果</span>：<%= history.result %></p>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+        <div id="history_reset" class="box">
+            <h2>Historyのリセット</h2>
+            <div class="content">
+                <form action="/admin/history/reset" method="post">
+                    <input type="submit" value="reset">
                 </form>
-            </td>
-        </tr>
-
-    <% end %>
-    </table>
+            </div>
+        </div>
+    </div>
+    </main>
 </body>
 </html>

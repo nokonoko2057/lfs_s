@@ -1,5 +1,367 @@
 * {
-	/*margin: 0;*/
-	/*padding: 0;*/
-	text-align: center
+	margin: 0;
+	padding: 0;
+	/*text-align: center*/
+}
+
+@font-face{
+	font-family: 'Futura';
+	src: url(/assets/fonts/Futura.ttc);
+}
+
+#index{
+	font-family: 'Futura';
+	
+	/*背景画像画面いっぱいに密着*/
+	position:absolute;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+	background:url(/assets/images/take.JPG);
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center center;
+	background-repeat: no-repeat;
+	
+	/*画面幅900pxまで*/
+	min-width: 515px;
+	/*max-width: 920px;*/
+	overflow-y: scroll;
+}
+
+#index #left-bar{
+	width:500px;
+	margin:5px;
+	float:left;
+	display:inline-block;
+	float:left;
+}
+
+#index #right-bar{
+	width:500px;
+	margin:5px;
+	float:left;
+	display:inline-block;
+	float:left;
+}
+
+#index h1{
+	padding: 10px 0 10px 20px;
+	margin-bottom:10px;
+	color:white;
+	background: #07313A;
+}
+
+#index h1 span{
+	color: #EB5252;
+}
+
+#index div.box{
+	float:left;
+	width:500px;
+	margin:5px;
+}
+
+#index div.box h2{
+	/*コンテナの見出し*/
+	border-left:10px #EB5252 solid;
+	padding:0 0 0 5px;
+	background: #07313A;
+	color: white;
+	border-radius:0 20px 0 0;
+}
+
+#index div.box .content{
+	width:480px;
+	border-radius:0 0 0 20px;
+	padding:10px;
+	background: rgba(200,200,200,0.3);
+}
+
+#index div.box#measure_form .content form{
+	position:relative;
+	background: rgba(200,200,200,0.3);
+	padding:10px;
+	height:100px;
+}
+
+#index div.box#measure_form .content form p span{
+	display:inline-block;
+	width:100px;
+	padding-right:5px;
+	margin-right: 5px;
+	background: #07313A;
+	color:white;
+	font-size:12px;
+	text-align: right;
+	border-radius:100px 0 0 100px;
+}
+
+#index div.box#measure_form .content form input[type="submit"]{
+	position:absolute;
+	right:12px;
+	bottom: 3px;
+	background: #07313A;
+	font-size: 16px;
+	color: white;
+	border-radius: 400px;
+	border:none;
+	padding:0 30px;
+}
+
+#index div.box#canvas{
+	float:left;
+}
+
+#index div.box#canvas .content{
+	width:480px;
+	background: rgba(200,200,200,0.3);
+	border-radius:0 0 0 20px;
+	padding:10px;
+}
+
+#index div.box#canvas h2{
+	/*コンテナの見出し*/
+	border-left:10px #EB5252 solid;
+	padding:0 0 0 5px;
+	background: #07313A;
+	color: white;
+	border-radius:0 20px 0 0;
+}
+
+#index div.box#canvas .content{
+	display: inline-block;
+	width:480px;
+	border-radius:0 0 0 20px;
+	background: rgba(200,200,200,0.3);
+}
+
+#index div.box#history_all{
+	float:left;
+	width:500px;
+}
+
+#index div.box#history_all .content{
+	width:480px;
+	min-height:20px;
+	max-height:400px;
+	overflow: scroll;
+	background: rgba(200,200,200,0.3);
+}
+
+
+
+/*管理画面*/
+#admin{
+	font-family: 'Futura';
+	
+	/*背景画像画面いっぱいに密着*/
+	position:absolute;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+	background:url(/assets/images/take.JPG);
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center center;
+	background-repeat: no-repeat;
+	
+	/*画面幅900pxまで*/
+	min-width: 515px;
+	/*max-width: 920px;*/
+	overflow-y: scroll;
+}
+
+#admin #left-bar{
+	width:500px;
+	margin:5px;
+	float:left;
+	display:inline-block;
+	float:left;
+}
+
+#admin #right-bar{
+	width:500px;
+	margin:5px;
+	float:left;
+	display:inline-block;
+	float:left;
+}
+
+
+#admin h1{
+	padding: 10px 0 10px 20px;
+	margin-bottom:10px;
+	color:white;
+	background: #07313A;
+}
+
+#admin h1 span{
+	color: #EB5252;
+}
+
+#admin div.box h2{
+	/*コンテナの見出し*/
+	border-left:10px #EB5252 solid;
+	padding:0 0 0 5px;
+	background: #07313A;
+	color: white;
+	border-radius:0 20px 0 0;
+}
+
+#admin div.box .content{
+	/*コンテナの内容*/
+	display:inline-block; 
+	/*display:inline-blockにしておくと新宿自在*/
+	width:480px;
+	/*でも横幅は固定するんるん*/
+	background: rgba(200,200,200,0.3);
+	padding: 10px;
+	border-radius:0 0 0 20px;
+}
+
+/*Unitの追加/編集*/
+#admin div.box .content > form{
+	position:relative;
+	background: rgba(200,200,200,0.3);
+	padding:10px;
+}
+
+#admin div.box .content > form p span{
+	display:inline-block;
+	width:100px;
+	padding-right:5px;
+	margin-right: 5px;
+	background: #07313A;
+	color:white;
+	font-size:12px;
+	text-align: right;
+	border-radius:100px 0 0 100px;
+}
+
+#admin div.box .content > form input[type="submit"]{
+	position:absolute;
+	right:12px;
+	bottom: 3px;
+	background: #07313A;
+	font-size: 16px;
+	color: white;
+	border-radius: 400px;
+	border:none;
+	padding:0 30px;
+}
+
+#admin div.box#unit_all .content{
+	min-height:20px;
+	max-height:400px;
+	overflow: scroll;
+}
+
+/*Unitの管理*/
+#admin div.box .content .unit{
+	position:relative;
+	background: rgba(200,200,200,0.3);
+	border-top: rgba(50,50,50,0.3) solid 5px;
+	padding:10px;
+	border-radius:0 20px 0 20px;
+	margin:5px 0;
+}
+
+#admin div.box .content .unit p{
+	padding:1px;
+	margin:2px 0 0 0;
+	background: rgba(200,200,200,0.3);
+	border-radius:100px;
+	font-weight:900;
+}
+
+#admin div.box .content .unit p span{
+	display:inline-block;
+	width:100px;
+	padding-right:5px;
+	margin-right: 5px;
+	background: #07313A;
+	color:white;
+	font-size:12px;
+	text-align: right;
+	border-radius:100px 0 0 100px;
+	font-weight:100;
+	
+}
+
+#admin div.box .content .unit > div{
+	position:absolute;
+	right:10px;
+	bottom:4px;
+}
+
+#admin div.box .content .unit form{
+	display: inline-block;
+}
+
+#admin div.box .content .unit form input{
+	background: #07313A;
+	font-size: 16px;
+	color: white;
+	border-radius: 400px;
+	border:none;
+	padding:0 30px;
+}
+
+#admin div.box#history_all{
+	float:left;
+	width:500px;
+}
+
+#admin div.box#history_all .content{
+	width:480px;
+	min-height:20px;
+	max-height:400px;
+	overflow: scroll;
+}
+
+
+#admin div.box .content .history{
+	position:relative;
+	background: rgba(200,200,200,0.3);
+	border-top: rgba(50,50,50,0.3) solid 5px;
+	padding:10px;
+	border-radius:0 20px 0 20px;
+	margin:5px 0;
+}
+
+#admin div.box .content .history p{
+	display:inline-block;
+}
+#admin div.box .content .history p span{
+	border-left: #07313A solid 5px;
+	margin-left: 10px;
+	padding: 0 14px 0 10px
+}
+
+#admin div.box#history_reset{
+	float:left;
+	width:500px;
+}
+
+#admin div.box#history_reset .content{
+	width:480px;
+}
+
+#admin div.box#history_reset .content form{
+	background:none;
+}
+	
+#admin div.box#history_reset .content input{
+	position:absolute;
+	right:12px;
+	bottom: -3px;
+	background: #EB5252;
+	font-size: 16px;
+	color: white;
+	border-radius: 400px;
+	border:none;
+	padding:3px 30px;
 }
